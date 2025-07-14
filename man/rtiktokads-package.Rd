@@ -2,7 +2,6 @@
 % Please edit documentation in R/rtiktokads-package.R, R/rtiktokads_package.R
 \docType{package}
 \name{rtiktokads-package}
-\alias{rtiktokads}
 \alias{rtiktokads-package}
 \title{rtiktokads: What the Package Does (One Line, Title Case)}
 \description{
@@ -11,9 +10,6 @@ What the package does (one paragraph).
 What the package does (one paragraph).
 }
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
-
-
 \strong{Maintainer}: First Last \email{first.last@example.com} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
 
 }
