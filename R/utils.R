@@ -83,10 +83,13 @@ tik_parse_business_centers <- function(resp) {
 ### парсер отчётов
 tik_parse_report <- function(resp) {
   content <- resp_body_json(resp)
+  # убираем дублирование поля advertiser_id
+  for (x in seq_len(length(content$data$list))) content$data$list[[x]]$metrics$advertiser_id <- NULL
+
   tibble(report = content$data$list) %>%
   unnest_wider(report) %>%
   unnest_wider(dimensions) %>%
-  unnest_wider(metrics)
+  unnest_wider(metrics, names_repair = "universal")
 }
 
 ## список парсеров

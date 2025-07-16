@@ -9,6 +9,7 @@
 #' * When report_type is set to BASIC or AUDIENCE, pass in advertiser_id or advertiser_ids. If you pass in both advertiser_id and advertiser_ids, advertiser_id will be ignored.
 #' * When report_type is set to PLAYABLE_MATERIAL, CATALOG, or TT_SHOP, pass in advertiser_id.
 #' * When report_type is set to BC, pass in bc_id.
+#' @param advertiser_ids  A list of advertiser IDs.
 #' @param bc_id ID of a Business Center that you have access to.
 #' @param service_type Ad service type. Not supported when report_type is BC.
 #' * AUCTION: auction ads, or both auction ads and reservation ads.
@@ -53,6 +54,7 @@
 #' }
 tik_get_report <- function(
     advertiser_id                = NULL,
+    advertiser_ids               = NULL,
     bc_id                        = NULL,
     service_type                 = NULL,
     report_type                  = 'BASIC',
@@ -71,14 +73,35 @@ tik_get_report <- function(
   # make correct json
   dimensions <- toJSON(dimensions)
   metrics <- toJSON(metrics)
-
   params <- as.list(environment())
 
-  res <- tik_build_request(
-    endpoint = "report/integrated/get/",
-    params = params,
-    resp_parse_function = tik_parsers$report
-  )
+  if (is.null(advertiser_ids)) {
+
+    res <- tik_build_request(
+      endpoint = "report/integrated/get/",
+      params = params,
+      resp_parse_function = tik_parsers$report
+    )
+
+  } else {
+
+    # разбиваем список рекламодателей по 5 на запрос
+    chunks <- split(advertiser_ids, ceiling(seq_along(advertiser_ids) / 5))
+    json_chunks <- lapply(chunks, toJSON)
+    # по очереди собираем данные по 5 рекламодателей
+    res <- purrr::map_dfr(
+      json_chunks,
+      \(chunk) {
+        params$advertiser_ids <- chunk
+        tik_build_request(
+          endpoint = "report/integrated/get/",
+          params = params,
+          resp_parse_function = tik_parsers$report
+        )
+      }
+    )
+
+  }
 
   return(res)
 
