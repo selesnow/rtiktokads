@@ -6,7 +6,7 @@
 #' @export
 #'
 tik_set_token_path <- function(
-    token_path = ifelse(getOption('tiktok.token_path') == 'global', rappdirs::site_data_dir("rtiktokads"), rappdirs::user_cache_dir("rtiktokads"))
+    token_path = ifelse(getOption('tiktok.auth_cache_mode') == 'global', rappdirs::site_data_dir("rtiktokads"), rappdirs::user_cache_dir("rtiktokads"))
     ) {
   options('tiktok.token_path' = token_path)
   cli_alert_success('Set token_path {.file {token_path}}')
