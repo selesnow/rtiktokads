@@ -1,17 +1,25 @@
 Package: rtiktokads
-Title: What the Package Does (One Line, Title Case)
+Title: Work with [TikTok Marketing API]
 Version: 0.1.0
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    c(person(given  = "Alexey",
+             family = "Seleznev",
+             role   = c("aut", "cre"),
+             email  = "selesnow@gmail.com",
+             comment = c(ORCID = "0000-0003-0410-7385")),
+      person(given = "Netpeak",
+             role = c("cph")))
+Description: Loading dtaa from [TikTok Marketing API] by bussines centers, 
+    advertisers, budgets and reports.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports: 
     cli,
+    dplyr,
     httr2,
     purrr,
     rappdirs,
+    tidyr,
     utils
