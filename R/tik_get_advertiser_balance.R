@@ -24,6 +24,7 @@ tik_get_advertiser_balance <- function(
     fields = NULL
 ) {
 
+  if (!is.null(fields)) fields <- toJSON(fields)
   params <- as.list(environment())
 
   res <- tik_build_request(
