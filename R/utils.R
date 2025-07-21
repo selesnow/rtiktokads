@@ -92,11 +92,38 @@ tik_parse_report <- function(resp) {
   unnest_wider(metrics, names_repair = "universal")
 }
 
+### парсер кампаний
+tik_parse_campaign <- function(resp) {
+  content <- resp_body_json(resp)
+
+  tibble(camp = content$data$list) %>%
+  unnest_wider(camp)
+}
+
+### парсер объявлений
+tik_parse_ads <- function(resp) {
+  content <- resp_body_json(resp)
+
+  tibble(ads = content$data$list) %>%
+  unnest_wider(ads)
+}
+
+### парсер объявлений
+tik_parse_ad_groups <- function(resp) {
+  content <- resp_body_json(resp)
+
+  tibble(ad_groups = content$data$list) %>%
+  unnest_wider(ad_groups)
+}
+
 ## список парсеров
 tik_parsers <- list(
   business_centers = tik_parse_business_centers,
   advertisers      = tik_parse_advertisers,
   advertisers_info = tik_parse_advertisers_info,
   budgets          = tik_parse_budgets,
+  campaign         = tik_parse_campaign,
+  ads              = tik_parse_ads,
+  ad_groups        = tik_parse_ad_groups,
   report           = tik_parse_report
 )

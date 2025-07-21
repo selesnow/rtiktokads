@@ -12,6 +12,9 @@ R Пакет для работы с [TikTok Marketing API](https://business-api.
     * `tik_get_advertiser_accounts()` - запросить список рекламных аккаунтов
     * `tik_get_advertiser_info()` - запросить информацию по рекламным аккаунтам
     * `tik_get_advertiser_balance()` - запросить информацию о балансе рекламных аккаунтов
+    * `tik_get_campaigns()` - Запрос рекламных кампаний
+    * `tik_get_ad_groups()` - Запрос групп объявлений
+    * `tik_get_ads()` - Запрос объявлений
 * Отчёты:
     * `tik_get_report()` - запрос отчётов из TikTok Marketing API
 
