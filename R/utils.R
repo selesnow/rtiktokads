@@ -1,9 +1,3 @@
-"https://business-api.tiktok.com/open_api/v1.3/bc/get/"                 # список бизнес центров
-"https://business-api.tiktok.com/open_api/v1.3/oauth2/advertiser/get/"  # список рекламных аккаунтов
-"https://business-api.tiktok.com/open_api/v1.3/advertiser/budget/get/"  # данные по аккаунтам включая валюту
-"https://business-api.tiktok.com/open_api/v1.3/advertiser/balance/get/" # лимиты
-"https://business-api.tiktok.com/open_api/v1.3/report/integrated/get/"  # отчёты по тратам
-
 # функция формирующая запрос
 tik_build_request <- function(
     endpoint,
@@ -21,6 +15,10 @@ tik_build_request <- function(
     req_headers(
       "Access-Token" = tik_auth()$data$access_token,
       "Content-Type" = "application/json"
+    ) %>%
+    req_throttle(
+      capacity = 8,
+      fill_time_s = 1
     ) %>%
     req_method("GET") %>%
     req_url_query(!!!params)
