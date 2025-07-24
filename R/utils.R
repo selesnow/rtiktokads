@@ -20,6 +20,10 @@ tik_build_request <- function(
       capacity = 8,
       fill_time_s = 1
     ) %>%
+    req_retry(
+      max_tries = 5,
+      is_transient = \(resp) resp_status(resp) %in% c(429, 500, 503)
+      ) %>%
     req_method("GET") %>%
     req_url_query(!!!params)
 
