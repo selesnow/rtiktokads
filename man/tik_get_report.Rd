@@ -6,6 +6,7 @@
 \usage{
 tik_get_report(
   advertiser_id = NULL,
+  advertiser_ids = NULL,
   bc_id = NULL,
   service_type = NULL,
   report_type = "BASIC",
@@ -28,6 +29,8 @@ tik_get_report(
 \item When report_type is set to PLAYABLE_MATERIAL, CATALOG, or TT_SHOP, pass in advertiser_id.
 \item When report_type is set to BC, pass in bc_id.
 }}
+
+\item{advertiser_ids}{A list of advertiser IDs.}
 
 \item{bc_id}{ID of a Business Center that you have access to.}
 

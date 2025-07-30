@@ -3,14 +3,19 @@
 \docType{package}
 \name{rtiktokads-package}
 \alias{rtiktokads-package}
-\title{rtiktokads: What the Package Does (One Line, Title Case)}
+\title{rtiktokads: Work with [TikTok Marketing API]}
 \description{
-What the package does (one paragraph).
+Loading dtaa from [TikTok Marketing API] by bussines centers, advertisers, budgets and reports.
 
-What the package does (one paragraph).
+Loading dtaa from [TikTok Marketing API] by bussines centers, advertisers, budgets and reports.
 }
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
+\strong{Maintainer}: Alexey Seleznev \email{selesnow@gmail.com} (\href{https://orcid.org/0000-0003-0410-7385}{ORCID})
+
+Other contributors:
+\itemize{
+  \item Netpeak [copyright holder]
+}
 
 }
 \keyword{internal}

@@ -5,7 +5,7 @@
 \title{Change session token path}
 \usage{
 tik_set_token_path(
-  token_path = ifelse(getOption("tiktok.token_path") == "global",
+  token_path = ifelse(getOption("tiktok.auth_cache_mode") == "global",
     rappdirs::site_data_dir("rtiktokads"), rappdirs::user_cache_dir("rtiktokads"))
 )
 }
