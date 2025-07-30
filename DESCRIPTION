@@ -1,6 +1,6 @@
 Package: rtiktokads
 Title: Work with [TikTok Marketing API]
-Version: 0.2.0
+Version: 0.3.0
 Authors@R: 
     c(person(given  = "Alexey",
              family = "Seleznev",
